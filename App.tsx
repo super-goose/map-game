@@ -7,27 +7,9 @@ import ContentView from './components/content-view';
 import { pointsOfInterest } from './data/pois';
 import { debugBorder } from './data/debug';
 import { Header } from './components/header';
+import { Footer } from './components/footer';
+import { fetchWeather } from './utils/weather';
 
-
-const Footer = () => {
-  return (
-    <View style={{
-      height: Dimensions.get('window').height * .2,
-      borderTopColor: "#052",
-      borderTopWidth: 2,
-      width: Dimensions.get('window').width,
-      alignItems: 'center',
-      ...debugBorder
-    }}>
-      <Text
-        style={{
-          color: '#ddf',
-          fontFamily: 'JosefinSans',
-        }}
-      >footer</Text>
-    </View>
-  );
-}
 
 export default function App() {
   const [loaded] = useFonts({
@@ -37,11 +19,12 @@ export default function App() {
   if (!loaded) {
     return null;
   }
+
   return (
     <View style={styles.container}>
       <Header />
       <ContentView style={{ ...debugBorder }}>
-        <MapScreen pois={pointsOfInterest} />
+        <MapScreen pois={pointsOfInterest} selectPoi={fetchWeather} />
       </ContentView>
       <Footer />
       <StatusBar style="light" />

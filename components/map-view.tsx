@@ -1,7 +1,7 @@
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import React from "react";
-import { POI } from "../data/pois";
+import { Location, POI } from "../data/pois";
 
 
 const PoiMarker: React.FC<{ poi: POI }> = ({ poi }) => (
@@ -14,7 +14,11 @@ const PoiMarker: React.FC<{ poi: POI }> = ({ poi }) => (
 
 );
 
-export const MapScreen: React.FC<{ pois: Array<POI> }> = ({ pois }) => (
+type MapProps = {
+  pois: Array<POI>
+  selectPoi: (location: Location) => Promise<any>
+}
+export const MapScreen: React.FC<MapProps> = ({ pois, selectPoi }) => (
   <MapView
     style={styles.map}
     region={{
@@ -29,7 +33,7 @@ export const MapScreen: React.FC<{ pois: Array<POI> }> = ({ pois }) => (
     moveOnMarkerPress={false}
     onMarkerPress={(e) => {
       e.preventDefault();
-      console.log(e.nativeEvent.coordinate);
+      selectPoi(e.nativeEvent.coordinate);
     }}
   >
     {pois.map((poi: POI) => (
