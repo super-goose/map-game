@@ -11,7 +11,7 @@ export type POI = {
   type: 'castle'
 }
 
-export const pointOfInterest: Array<POI> = [
+export const pointsOfInterest: Array<POI> = [
   {
     // image: 'burg-hohenzollern.png',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Burg_Hohenzollern_ak.jpg/400px-Burg_Hohenzollern_ak.jpg',

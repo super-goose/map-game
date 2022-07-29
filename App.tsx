@@ -4,22 +4,30 @@ import { MapScreen } from './components/map-view';
 import { useFonts } from 'expo-font';
 import React from 'react';
 import ContentView from './components/content-view';
-import { pointOfInterest } from './data/castles';
+import { pointsOfInterest } from './data/pois';
+import { debugBorder } from './data/debug';
+import { Header } from './components/header';
 
-const debugBorder = {
-  // borderWidth: 1,
-  // borderColor: 'magenta',
-};
-const titleHeight = Dimensions.get('window').height * .1
 
-const Title: React.FC = ({ children }) => (
-  <Text style={{
-    fontSize: 36,
-    fontFamily: 'JosefinSans',
-    color: '#ddf',
-    ...debugBorder,
-  }}>{children}</Text>
-);
+const Footer = () => {
+  return (
+    <View style={{
+      height: Dimensions.get('window').height * .2,
+      borderTopColor: "#052",
+      borderTopWidth: 2,
+      width: Dimensions.get('window').width,
+      alignItems: 'center',
+      ...debugBorder
+    }}>
+      <Text
+        style={{
+          color: '#ddf',
+          fontFamily: 'JosefinSans',
+        }}
+      >footer</Text>
+    </View>
+  );
+}
 
 export default function App() {
   const [loaded] = useFonts({
@@ -31,15 +39,11 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <View style={{
-        height: titleHeight,
-        ...debugBorder,
-      }}>
-        <Title>Germany</Title>
-      </View>
+      <Header />
       <ContentView style={{ ...debugBorder }}>
-        <MapScreen pois={pointOfInterest} />
+        <MapScreen pois={pointsOfInterest} />
       </ContentView>
+      <Footer />
       <StatusBar style="light" />
     </View>
   );
@@ -51,7 +55,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     backgroundColor: '#222',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     ...debugBorder,
 
   },
