@@ -26,10 +26,24 @@ export const fetchWeather = ({ latitude, longitude }: Location) => {
       return massageCurrent(data);
     });
 };
+type Direction = 'sw' | 's' | 'se' | 'e' | 'ne' | 'n' | 'nw' | 'w'
 
-function massageCurrent(data: any) {
-  if (!data) return false;
-  console.log(data.wind)
+type Weather = {
+  description: string
+  humidity: number
+  icon: string //"http://openweathermap.org/img/wn/02n@2x.png",
+  temperature: number
+  timestamp: number,
+  wind: {
+    direction: Direction
+    gusts: number | null,
+    speed: number,
+  },
+}
+
+function massageCurrent(data: any): Weather | null {
+  if (!data) return null;
+  // console.log(data.wind)
   const timestamp = data.dt * 1000;
   const temperature = Math.round(data.main.temp);
   const humidity = data.main.humidity;
@@ -37,14 +51,14 @@ function massageCurrent(data: any) {
   const icon = iconUrl(data.weather[0].icon);
   const wind = {
     speed: Math.round(data.wind.speed),
-    gusts: data.wind.gust ? Math.round(data.wind.gust) : false,
+    gusts: data.wind.gust ? Math.round(data.wind.gust) : null,
     direction: degToDir(data.wind.deg),
   };
 
   return { timestamp, temperature, humidity, description, icon, wind };
 }
 
-function degToDir(deg: number) {
+function degToDir(deg: number): Direction {
   if (deg < 22.5) {
     return 'n';
   } else if (deg < 67.5) {

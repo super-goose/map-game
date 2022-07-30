@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { MapScreen } from './components/map-view';
 import { useFonts } from 'expo-font';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import ContentView from './components/content-view';
 import { pointsOfInterest } from './data/pois';
 import { debugBorder } from './data/debug';
@@ -20,13 +20,17 @@ export default function App() {
     return null;
   }
 
+  const [poi, setPoi] = useState(null);
+  const [weather, setWeather] = useState(null);
+  const selectPoi = useCallback(() => { }, []);
+
   return (
     <View style={styles.container}>
       <Header />
       <ContentView style={{ ...debugBorder }}>
         <MapScreen pois={pointsOfInterest} selectPoi={fetchWeather} />
       </ContentView>
-      <Footer />
+      <Footer poi={poi} weather={weather} />
       <StatusBar style="light" />
     </View>
   );

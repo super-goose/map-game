@@ -18,6 +18,6 @@ export const Header = () => (
     justifyContent: 'flex-end',
     ...debugBorder,
   }}>
-    <Title>Germany</Title>
+    <Title>Deutschland</Title>
   </View>
 )
