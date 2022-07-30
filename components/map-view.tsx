@@ -4,21 +4,20 @@ import React from "react";
 import { Location, POI } from "../data/pois";
 
 
-const PoiMarker: React.FC<{ poi: POI }> = ({ poi }) => (
+const PoiMarker: React.FC<{ poi: POI, selected: boolean }> = ({ poi, selected }) => (
   <Marker
     coordinate={poi.location}
-    pinColor={'#4df'}
-
-  // image={{ uri: poi.image }}
+    pinColor={selected ? '#07a' : '#4df'}
   />
 
 );
 
 type MapProps = {
   pois: Array<POI>
-  selectPoi: (location: Location) => Promise<any>
+  selectPoi: (location: Location) => void
+  selectedPoi: string | null
 }
-export const MapScreen: React.FC<MapProps> = ({ pois, selectPoi }) => (
+export const MapScreen: React.FC<MapProps> = ({ pois, selectPoi, selectedPoi }) => (
   <MapView
     style={styles.map}
     region={{
@@ -36,9 +35,11 @@ export const MapScreen: React.FC<MapProps> = ({ pois, selectPoi }) => (
       selectPoi(e.nativeEvent.coordinate);
     }}
   >
-    {pois.map((poi: POI) => (
-      <PoiMarker key={poi.name} poi={poi} />
-    ))}
+    {pois.map((poi: POI) => {
+      return (
+        <PoiMarker key={poi.name} poi={poi} selected={poi.name === selectedPoi} />
+      )
+    })}
   </MapView>
 );
 

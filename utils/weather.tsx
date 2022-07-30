@@ -22,13 +22,13 @@ export const fetchWeather = ({ latitude, longitude }: Location) => {
       return {};
     })
     .then((data) => {
-      console.log(massageCurrent(data));
+      // console.log(massageCurrent(data));
       return massageCurrent(data);
     });
 };
 type Direction = 'sw' | 's' | 'se' | 'e' | 'ne' | 'n' | 'nw' | 'w'
 
-type Weather = {
+export type Weather = {
   description: string
   humidity: number
   icon: string //"http://openweathermap.org/img/wn/02n@2x.png",
