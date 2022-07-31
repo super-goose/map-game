@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    width: Dimensions.get('window').width
+    width: Dimensions.get('window').width,
   },
   poiData: {
     width: Dimensions.get('window').width - 205,

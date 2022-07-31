@@ -67,4 +67,34 @@ export const pointsOfInterest: Array<POI> = [
       longitude: 10.795,
     }
   },
+  {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Schweriner_Schloss_Aerial_View_%287788102134%29.jpg/400px-Schweriner_Schloss_Aerial_View_%287788102134%29.jpg',
+    name: 'Schwerin Castle',
+    state: 'Mecklenburg-Vorpommern',
+    type: 'castle',
+    location: {
+      latitude: 53.624167,
+      longitude: 11.418889,
+    }
+  },
+  {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Luftbild_Kulturdenkmal_Schloss_Gl%C3%BCcksburg_Wasserschloss_Schleswig-Holstein_-_Foto_Wolfgang_Pehlemann_Steinberg_IMG_6753.jpg/400px-Luftbild_Kulturdenkmal_Schloss_Gl%C3%BCcksburg_Wasserschloss_Schleswig-Holstein_-_Foto_Wolfgang_Pehlemann_Steinberg_IMG_6753.jpg',
+    name: 'Glücksburg Castle',
+    state: 'Schleswig Holstein',
+    type: 'castle',
+    location: {
+      latitude: 54.833611,
+      longitude: 9.55,
+    }
+  },
+  {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Reichsburg_Cochem_0003a.jpg/400px-Reichsburg_Cochem_0003a.jpg',
+    name: 'Cochem Castle',
+    state: 'Rhineland-Palatinate',
+    type: 'castle',
+    location: {
+      latitude: 50.146944,
+      longitude: 7.166667,
+    }
+  }
 ];

@@ -46,8 +46,6 @@ export const MapScreen: React.FC<MapProps> = ({ pois, selectPoi, selectedPoi }) 
         }}
         onPanDrag={(e) => {
           setPolygon([...polygon, e.nativeEvent.coordinate]);
-          console.log('pan dragging happening');
-          console.log(e.nativeEvent.coordinate);
         }}
       >
         {pois
